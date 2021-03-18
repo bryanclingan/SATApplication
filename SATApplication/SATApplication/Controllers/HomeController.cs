@@ -7,7 +7,15 @@ namespace SATApplication.UI.MVC.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login","Account");
+            }
+            
         }
 
         [HttpGet]

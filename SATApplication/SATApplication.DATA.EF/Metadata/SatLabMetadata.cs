@@ -35,14 +35,14 @@ namespace SATApplication.DATA.EF
         public string City { get; set; }
 
         [StringLength(2, ErrorMessage = "State must be 2 characters or less")]
-        [Display(Name = "City")]
+        [Display(Name = "State")]
         public string State { get; set; }
 
         [StringLength(10, ErrorMessage = "Zip Code must be 10 characters or less")]
         [Display(Name = "Zip Code")]
         public string ZipCode { get; set; }
 
-        [StringLength(13, ErrorMessage = "City must be 13 characters or less")]
+        [StringLength(13, ErrorMessage = "Phone must be 13 characters or less")]
         [Display(Name = "Phone")]
         public string Phone { get; set; }
 
@@ -137,7 +137,7 @@ namespace SATApplication.DATA.EF
         [Display(Name = "Course Name")]
         public string CourseName { get; set; }
         [Required(ErrorMessage = "Course Description is required")]
-        [MaxLength(ErrorMessage = "You have exceeded the maximum amount of characters")]
+        
         [Display(Name = "Course Description")]
         public string CourseDescription { get; set; }
         [Required(ErrorMessage = "Credit Hours are required")]
