@@ -17,12 +17,23 @@ namespace SATApplication.UI.MVC.Controllers
             }
             
         }
-
-        [HttpGet]
-        [Authorize]
-        public ActionResult About()
+        
+        public ActionResult IndexList()
         {
-            ViewBag.Message = "Your app description page.";
+            if (User.Identity.IsAuthenticated)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+        }
+
+       
+        public ActionResult AccessDenied()
+        {
+            
 
             return View();
         }

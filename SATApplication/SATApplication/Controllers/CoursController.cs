@@ -17,7 +17,15 @@ namespace SATApplication.Controllers
         // GET: Cours
         public ActionResult Index()
         {
-            return View(db.Courses.ToList());
+            if (User.IsInRole("Admin"))
+            {
+                return View(db.Courses.ToList());
+            }
+            else
+            {
+                return RedirectToAction("AccessDenied", "Home");
+            }
+
         }
 
         // GET: Cours/Details/5
