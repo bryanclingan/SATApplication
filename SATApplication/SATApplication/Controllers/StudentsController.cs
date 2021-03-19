@@ -18,7 +18,15 @@ namespace SATApplication.Controllers
         public ActionResult Index()
         {
             var students = db.Students.Include(s => s.StudentStatus);
-            return View(students.ToList());
+            if (User.IsInRole("Admin") || User.IsInRole("Scheduler"))
+            {
+                return View(students.ToList());
+            }
+            else
+            {
+                return RedirectToAction("AccessDenied", "Home");
+            }
+            
         }
 
         // GET: Students/Details/5

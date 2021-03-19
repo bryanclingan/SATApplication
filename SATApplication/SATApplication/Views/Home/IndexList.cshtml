@@ -3,5 +3,68 @@
     ViewBag.Title = "IndexList";
 }
 
-<h2>IndexList</h2>
 
+<a href="@Url.Action("Index","Home")">Tiled View</a>
+<section class="probootstrap-section probootstrap-bg-white probootstrap-border-top">
+    <div class="container">
+        <!-- END row -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="probootstrap-service-2 probootstrap-animate">
+                    <div class="image">
+                        <div class="image-bg">
+                            <img src="~/Content/img/Students.jpg" alt="Free Bootstrap Template by ProBootstrap.com">
+                        </div>
+                    </div>
+                    <div class="text">
+
+                        <h3>Students</h3>
+                        <p>Add/Remove Students</p>
+                        <p><a href="@Url.Action("Index","Students")" class="btn btn-primary">List of Students</a> </p>
+                    </div>
+                </div>
+                <div class="probootstrap-service-2 probootstrap-animate">
+                    <div class="image">
+                        <div class="image-bg">
+                            <img src="~/Content/img/Courses.jpg" alt="Free Bootstrap Template by ProBootstrap.com">
+                        </div>
+                    </div>
+                    <div class="text">
+
+                        <h3>Courses</h3>
+                        <p>List of Courses</p>
+                        <p><a href="@Url.Action("Index","Cours")" class="btn btn-primary">List of Courses</a> </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="probootstrap-service-2 probootstrap-animate">
+                    <div class="image">
+                        <div class="image-bg">
+                            <img src="~/Content/img/scheduleclass.jpg" alt="Free Bootstrap Template by ProBootstrap.com">
+                        </div>
+                    </div>
+                    <div class="text">
+
+                        <h3>Schedule Class</h3>
+                        <p>Schedule a class</p>
+                        <p><a href="@Url.Action("Index","ScheduledClasses")" class="btn btn-primary">Schedule a class</a> </p>
+                    </div>
+                </div>
+                <div class="probootstrap-service-2 probootstrap-animate">
+                    <div class="image">
+                        <div class="image-bg">
+                            <img src="~/Content/img/Enrolment.jpeg" alt="Free Bootstrap Template by ProBootstrap.com">
+                        </div>
+                    </div>
+                    <div class="text">
+
+                        <h3>Enrollment</h3>
+                        <p>Enroll a student in a class</p>
+                        <p><a href="@Url.Action("Index","Enrollments")" class="btn btn-primary">Enroll now</a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

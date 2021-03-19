@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ProBootstrap:Enlight &mdash; Free Bootstrap Theme, Free Responsive Bootstrap Website Template</title>
+    <title>SAT Scheduling Tool</title>
     <meta name="description" content="Free Bootstrap Theme by ProBootstrap.com">
     <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
 
@@ -52,11 +52,11 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="@Url.Action("Index","Home")">Home</a></li>
-                        
 
-                        <li><a href="contact.html">Contact</a></li>
+
+                        <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
                         @Html.Partial("_LoginPartial")
-                        @if (User.IsInRole("Admin"))
+                        @if (User.IsInRole("Admin") || User.IsInRole("Scheduler"))
                         {
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin</a>
@@ -65,9 +65,15 @@
                                     <li><a href="@Url.Action("Index","Enrollments")">Enrollments</a></li>
                                     <li><a href="@Url.Action("Index","ScheduledClasses")">Schedule Class</a></li>
                                     <li><a href="@Url.Action("Index","Students")">Students</a></li>
+                                    
+                                    <li><a href="@Url.Action("Index","StudentStatus")">Student Status</a></li>
 
                                 </ul>
                             </li>
+
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
                             <li><a href="@Url.Action("Index","RolesAdmin")"> Roles Admin</a></li>
                             <li><a href="@Url.Action("Index","UsersAdmin")"> User Admin</a></li>
                         }
@@ -78,6 +84,12 @@
 
         </nav>
         @RenderBody()
+
+        @if (User.IsInRole("Admin"))
+        {
+        <a href="~/Content/SAT project Documentation.pdf" target="_blank">SAT project Documentation.pdf</a>
+        }
+        
         <footer class="probootstrap-footer probootstrap-bg">
 
             <div class="probootstrap-copyright">

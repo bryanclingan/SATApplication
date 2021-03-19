@@ -10,17 +10,16 @@ using SATApplication.DATA.EF;
 
 namespace SATApplication.Controllers
 {
-    public class ScheduledClassesController : Controller
+    public class StudentStatusController : Controller
     {
         private SatLabEntities db = new SatLabEntities();
 
-        // GET: ScheduledClasses
+        // GET: StudentStatus
         public ActionResult Index()
         {
-            var scheduledClasses = db.ScheduledClasses.Include(s => s.Cours).Include(s => s.ScheduledClassStatus);
-            if (User.IsInRole("Admin") || User.IsInRole("Scheduler"))
+            if (User.IsInRole("Admin"))
             {
-                return View(scheduledClasses.ToList());
+                return View(db.StudentStatuses.ToList());
             }
             else
             {
@@ -29,105 +28,97 @@ namespace SATApplication.Controllers
             
         }
 
-        // GET: ScheduledClasses/Details/5
+        // GET: StudentStatus/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ScheduledClass scheduledClass = db.ScheduledClasses.Find(id);
-            if (scheduledClass == null)
+            StudentStatus studentStatus = db.StudentStatuses.Find(id);
+            if (studentStatus == null)
             {
                 return HttpNotFound();
             }
-            return View(scheduledClass);
+            return View(studentStatus);
         }
 
-        // GET: ScheduledClasses/Create
+        // GET: StudentStatus/Create
         public ActionResult Create()
         {
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName");
-            ViewBag.SCSID = new SelectList(db.ScheduledClassStatuses, "SCSID", "SCSName");
             return View();
         }
 
-        // POST: ScheduledClasses/Create
+        // POST: StudentStatus/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ScheduledClassId,CourseId,StartDate,EndDate,InstructorName,Location,SCSID")] ScheduledClass scheduledClass)
+        public ActionResult Create([Bind(Include = "SSID,SSName,SSDescription")] StudentStatus studentStatus)
         {
             if (ModelState.IsValid)
             {
-                db.ScheduledClasses.Add(scheduledClass);
+                db.StudentStatuses.Add(studentStatus);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", scheduledClass.CourseId);
-            ViewBag.SCSID = new SelectList(db.ScheduledClassStatuses, "SCSID", "SCSName", scheduledClass.SCSID);
-            return View(scheduledClass);
+            return View(studentStatus);
         }
 
-        // GET: ScheduledClasses/Edit/5
+        // GET: StudentStatus/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ScheduledClass scheduledClass = db.ScheduledClasses.Find(id);
-            if (scheduledClass == null)
+            StudentStatus studentStatus = db.StudentStatuses.Find(id);
+            if (studentStatus == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", scheduledClass.CourseId);
-            ViewBag.SCSID = new SelectList(db.ScheduledClassStatuses, "SCSID", "SCSName", scheduledClass.SCSID);
-            return View(scheduledClass);
+            return View(studentStatus);
         }
 
-        // POST: ScheduledClasses/Edit/5
+        // POST: StudentStatus/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ScheduledClassId,CourseId,StartDate,EndDate,InstructorName,Location,SCSID")] ScheduledClass scheduledClass)
+        public ActionResult Edit([Bind(Include = "SSID,SSName,SSDescription")] StudentStatus studentStatus)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(scheduledClass).State = EntityState.Modified;
+                db.Entry(studentStatus).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", scheduledClass.CourseId);
-            ViewBag.SCSID = new SelectList(db.ScheduledClassStatuses, "SCSID", "SCSName", scheduledClass.SCSID);
-            return View(scheduledClass);
+            return View(studentStatus);
         }
 
-        // GET: ScheduledClasses/Delete/5
+        // GET: StudentStatus/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ScheduledClass scheduledClass = db.ScheduledClasses.Find(id);
-            if (scheduledClass == null)
+            StudentStatus studentStatus = db.StudentStatuses.Find(id);
+            if (studentStatus == null)
             {
                 return HttpNotFound();
             }
-            return View(scheduledClass);
+            return View(studentStatus);
         }
 
-        // POST: ScheduledClasses/Delete/5
+        // POST: StudentStatus/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ScheduledClass scheduledClass = db.ScheduledClasses.Find(id);
-            db.ScheduledClasses.Remove(scheduledClass);
+            StudentStatus studentStatus = db.StudentStatuses.Find(id);
+            db.StudentStatuses.Remove(studentStatus);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

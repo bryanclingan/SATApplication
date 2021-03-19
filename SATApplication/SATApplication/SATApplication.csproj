@@ -177,6 +177,7 @@
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\ScheduledClassesController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
+    <Compile Include="Controllers\StudentStatusController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -243,6 +244,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="_Archive\contact.html" />
     <Content Include="_Archive\css\custom.css" />
     <Content Include="_Archive\css\default-skin\default-skin.css" />
     <Content Include="_Archive\css\default-skin\default-skin.png" />
@@ -329,6 +331,7 @@
     <Content Include="Content\fonts\icomoon demo\fonts\icomoon.woff" />
     <Content Include="Content\fonts\icomoon demo\selection.json" />
     <Content Include="Content\css\styles-merged.css.map" />
+    <Content Include="Content\SAT project Documentation.pdf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -420,6 +423,11 @@
     <Content Include="_Archive\scss\_custom-settings.scss" />
     <Content Include="Views\Home\AccessDenied.cshtml" />
     <Content Include="Views\Home\IndexList.cshtml" />
+    <Content Include="Views\StudentStatus\Create.cshtml" />
+    <Content Include="Views\StudentStatus\Delete.cshtml" />
+    <Content Include="Views\StudentStatus\Details.cshtml" />
+    <Content Include="Views\StudentStatus\Edit.cshtml" />
+    <Content Include="Views\StudentStatus\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
